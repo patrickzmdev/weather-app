@@ -1,0 +1,79 @@
+<div class="container" *ngIf="weatherDatasInput">
+  <div class="upper-data">
+    <img src="../../../../../assets/sun.jpg"
+    *ngIf="weatherDatasInput.weather[0].main === 'Clear' && weatherDatasInput.weather[0].icon === '01d'"/>
+    <img src="../../../../../assets/lua.jpg"
+    *ngIf="weatherDatasInput.weather[0].main === 'Clear' && weatherDatasInput.weather[0].icon === '01n'"/>
+    <img src="../../../../../assets/nublado.jpeg"
+    *ngIf="weatherDatasInput.weather[0].main === 'Clouds'"/>
+    <img src="../../../../../assets/raining.jpg"
+    *ngIf="weatherDatasInput.weather[0].main === 'Rain' || weatherDatasInput.weather[0].main === 'Drizzle'"/>
+    <img src="../../../../../assets/tempestade.jpeg"
+    *ngIf="weatherDatasInput.weather[0].main === 'Thunderstorm'"/>
+    <img src="../../../../../assets/neve.jpeg"
+    *ngIf="weatherDatasInput.weather[0].main === 'Snow'"/>
+    <img src="../../../../../assets/neblina.jpeg"
+    *ngIf="weatherDatasInput.weather[0].main === 'Mist'"/>
+
+
+
+
+    <div class="weather-data">
+      <div class="location">{{weatherDatasInput.name}}</div>
+      <div class="temperature">{{weatherDatasInput.main.temp | number: "1.0-0"}}ºC</div>
+    </div>
+
+  </div>
+
+  <div class="lower-data">
+    <div  class="more-info-label">Mais Informações</div>
+      <div class="more-info-container">
+        <div class="info-block">
+          <div class="info-block-label">
+            <fa-icon size="lg" [icon]="minTemperatureIcon"></fa-icon>
+            <span>Mínima</span>
+          </div>
+
+          <div class="info-block-value">
+            {{weatherDatasInput.main.temp_min | number:"1.0-0"}}ºC
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-block-label">
+            <fa-icon size="lg" [icon]="maxTemperatureIcon"></fa-icon>
+            <span>Máxima</span>
+          </div>
+
+            <div class="info-block-value">
+              {{weatherDatasInput.main.temp_max | number:"1.0-0"}}ºC
+            </div>
+        </div>
+
+        <div class="info-block">
+              <div class="info-block-label">
+                <fa-icon size="lg" [icon]="humidityIcon"></fa-icon>
+                <span>Umidade</span>
+              </div>
+
+              <div class="info-block-value">
+                {{weatherDatasInput.main.humidity}}%
+              </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-block-label">
+            <fa-icon size="lg" [icon]="windIcon"></fa-icon>
+            <span>Velocidade do Vento</span>
+          </div>
+
+          <div class="info-block-value">
+            {{weatherDatasInput.wind.speed}} km/h
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+</div>
